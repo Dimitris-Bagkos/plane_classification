@@ -1,0 +1,4 @@
+Get-ChildItem -Filter *.m4a | ForEach-Object {
+    $output = "$($_.BaseName).wav"
+    ffmpeg -i $_.FullName $output
+}
