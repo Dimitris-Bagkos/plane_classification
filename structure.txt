@@ -1,0 +1,331 @@
++---clustering
+|       hierarchical.py
+|       k-means.py
+|       k_means_clusters.pkl
+|       k_means_clusters_normalised.pkl
+|       normalisation.py
+|       optimal_clusters.py
+|       
++---data
+|   |   505321__marcelweiss__s63-amg-v8-engine-revs.wav
+|   |   mra_to_wav_powershell_command.txt
+|   |   
+|   +---converted_wav
+|   +---Data 1 August 2025
+|   |       aur611y n.wav
+|   |       aur9lg n.wav
+|   |       bti6bm e.wav
+|   |       cca632 e.wav
+|   |       ces214 e +train horn.wav
+|   |       efw2646 n.wav
+|   |       efw2cl s.wav
+|   |       efw4ss.wav
+|   |       efw56r n.wav
+|   |       efw7gf s.wav
+|   |       efw9te e.wav
+|   |       eju39tw n.wav
+|   |       eju71gx e.wav
+|   |       eju75eg e.wav
+|   |       exy601y e.wav
+|   |       exy65gk s.wav
+|   |       eze58ln n.wav
+|   |       ezs12tf s.wav
+|   |       ezs41qw s.wav
+|   |       ezy12ej e.wav
+|   |       ezy14lz e.wav
+|   |       ezy23pf s.wav
+|   |       ezy23yd s.wav
+|   |       ezy24ru s.wav
+|   |       ezy295c e.wav
+|   |       ezy32fy s.wav
+|   |       ezy37tq s.wav
+|   |       ezy37vg e.wav
+|   |       ezy38jk s.wav
+|   |       ezy39wz e.wav
+|   |       ezy41fp e.wav
+|   |       ezy42rt e.wav
+|   |       ezy47az e.wav
+|   |       ezy48xz n.wav
+|   |       ezy49ha n.wav
+|   |       ezy54mt s.wav
+|   |       ezy58vq s.wav
+|   |       ezy629p e +train horn.wav
+|   |       ezy656r e.wav
+|   |       ezy67jg e.wav
+|   |       ezy68gd n.wav
+|   |       ezy68tb e.wav
+|   |       ezy71ec e.wav
+|   |       ezy73at s.wav
+|   |       ezy78hu n.wav
+|   |       ezy78mw s.wav
+|   |       ezy79fa e.wav
+|   |       ezy8021 n.wav
+|   |       ezy827d e.wav
+|   |       ezy8297 e.wav
+|   |       ezy85wc s.wav
+|   |       ezy874w e.wav
+|   |       ezy898x e.wav
+|   |       ezy94jq e.wav
+|   |       ezy95gm s.wav
+|   |       ezy97mp n.wav
+|   |       ezy97qn e.wav
+|   |       ezy97yg.wav
+|   |       ezy98cm.wav
+|   |       noz1309 e.wav
+|   |       nsz3521 e.wav
+|   |       nsz3525.wav
+|   |       nsz60x e.wav
+|   |       ram803 n.wav
+|   |       ryr52pl n.wav
+|   |       swr5qb s.wav
+|   |       sxs5ak e.wav
+|   |       tar793 s.wav
+|   |       thy2sp e.wav
+|   |       tom2ex e.wav
+|   |       tom5566 s.wav
+|   |       tom9tm e.wav
+|   |       ubd116 e.wav
+|   |       vlg1ba s.wav
+|   |       vlg28qv s.wav
+|   |       vlg6309.wav
+|   |       vlg739d s.wav
+|   |       wmt7rd e.wav
+|   |       wuk5611 e.wav
+|   |       wuk6hv e.wav
+|   |       wzz1956 e.wav
+|   |       wzz85 e.wav
+|   |       
+|   +---Data 1 August 2025 - Original
+|   |       aur611y n.m4a
+|   |       aur9lg n.m4a
+|   |       bti6bm e.m4a
+|   |       cca632 e.m4a
+|   |       ces214 e +train horn.m4a
+|   |       efw2646 n.m4a
+|   |       efw2cl s.m4a
+|   |       efw4ss s.m4a
+|   |       efw56r n.m4a
+|   |       efw7gf s.m4a
+|   |       efw9te e.m4a
+|   |       eju39tw n.m4a
+|   |       eju71gx e.m4a
+|   |       eju75eg e.m4a
+|   |       exy601y e.m4a
+|   |       exy65gk s.m4a
+|   |       eze58ln n.m4a
+|   |       ezs12tf s.m4a
+|   |       ezs41qw s.m4a
+|   |       ezy12ej e.m4a
+|   |       ezy14lz e.m4a
+|   |       ezy23pf s.m4a
+|   |       ezy23yd s.m4a
+|   |       ezy24ru s.m4a
+|   |       ezy295c e.m4a
+|   |       ezy32fy s.m4a
+|   |       ezy37tq s.m4a
+|   |       ezy37vg e.m4a
+|   |       ezy38jk s.m4a
+|   |       ezy39wz e.m4a
+|   |       ezy41fp e.m4a
+|   |       ezy42rt e.m4a
+|   |       ezy47az e.m4a
+|   |       ezy48xz n.m4a
+|   |       ezy49ha n.m4a
+|   |       ezy54mt s.m4a
+|   |       ezy58vq s.m4a
+|   |       ezy629p e +train horn.m4a
+|   |       ezy656r e.m4a
+|   |       ezy67jg e.m4a
+|   |       ezy68gd n.m4a
+|   |       ezy68tb e.m4a
+|   |       ezy71ec e.m4a
+|   |       ezy73at s.m4a
+|   |       ezy78hu n.m4a
+|   |       ezy78mw s.m4a
+|   |       ezy79fa e.m4a
+|   |       ezy8021 n.m4a
+|   |       ezy827d e.m4a
+|   |       ezy8297 e.m4a
+|   |       ezy85wc s.m4a
+|   |       ezy874w e.m4a
+|   |       ezy898x e.m4a
+|   |       ezy94jq e.m4a
+|   |       ezy95gm s.m4a
+|   |       ezy97mp n.m4a
+|   |       ezy97qn e.m4a
+|   |       ezy97yg e.m4a
+|   |       ezy98cm e.m4a
+|   |       noz1309 e.m4a
+|   |       nsz3521 e.m4a
+|   |       nsz3525 e.m4a
+|   |       nsz60x e.m4a
+|   |       ram803 n.m4a
+|   |       ryr52pl n.m4a
+|   |       swr5qb s.m4a
+|   |       sxs5ak e.m4a
+|   |       tar793 s.m4a
+|   |       thy2sp e.m4a
+|   |       tom2ex e.m4a
+|   |       tom5566 s.m4a
+|   |       tom9tm e.m4a
+|   |       ubd116 e.m4a
+|   |       vlg1ba s.m4a
+|   |       vlg28qv s.m4a
+|   |       vlg6309 n.m4a
+|   |       vlg739d s.m4a
+|   |       wmt7rd e.m4a
+|   |       wuk5611 e.m4a
+|   |       wuk6hv e.m4a
+|   |       wzz1956 e.m4a
+|   |       wzz85 e.m4a
+|   |       
+|   +---Data 18 June 2025
+|   |   +---Data 18 June 2025
+|   |   |       12.07 ezy68yk.m4a
+|   |   |       12.08 ezy48an.m4a
+|   |   |       12.11 nsz5wu.m4a
+|   |   |       12.13 efw58w.m4a
+|   |   |       12.16 ezy37gx.m4a
+|   |   |       12.20 ss1,2.m4a
+|   |   |       12.22 vlg23ey.m4a
+|   |   |       12.25 ezy12xf.m4a
+|   |   |       12.30 ezy18yx.m4a
+|   |   |       12.34 ezy54zb.m4a
+|   |   |       12.36 efw5wb.m4a
+|   |   |       12.38 baw2202.m4a
+|   |   |       12.39 ss3, then ss4.m4a
+|   |   |       12.43 ezy6460 full turn.m4a
+|   |   |       
+|   |   \---wavs
+|   |           12.07 ezy68yk.wav
+|   |           12.08 ezy48an.wav
+|   |           12.11 nsz5wu.wav
+|   |           12.13 efw58w.wav
+|   |           12.16 ezy37gx.wav
+|   |           12.20 ss1,2.wav
+|   |           12.22 vlg23ey.wav
+|   |           12.25 ezy12xf.wav
+|   |           12.30 ezy18yx.wav
+|   |           12.34 ezy54zb.wav
+|   |           12.36 efw5wb.wav
+|   |           12.38 baw2202.wav
+|   |           12.39 ss3, then ss4.wav
+|   |           
+|   +---Data 20 June 2025
+|   |       13.25 vlg4bp.wav
+|   |       13.29 wzz934.wav
+|   |       13.32 ezy79ek.wav
+|   |       13.40 tsc123.wav
+|   |       13.43 ubt70a.wav
+|   |       13.47 ezy37hr.wav
+|   |       13.48 ezy247g.wav
+|   |       13.51 baw2203.wav
+|   |       14.01 ezy174d.wav
+|   |       14.07 dal63.wav
+|   |       14.10 ezy465x.wav
+|   |       14.16 efw06b.wav
+|   |       14.19 ezy6519.wav
+|   |       14.20 baw23k.wav
+|   |       14.22 ezy85rg.wav
+|   |       14.23 ezy458w.wav
+|   |       14.30 ezy58jm.wav
+|   |       14.33 ezy96qg.wav
+|   |       14.37 ezy185b.wav
+|   |       14.42 wuk4hp.wav
+|   |       14.45 tom642.wav
+|   |       14.47 vlg97cv.wav
+|   |       14.48 thy7lj.wav
+|   |       14.50 ezy25nz.wav
+|   |       14.53 efw4yw.wav
+|   |       14.55 tom4ce.wav
+|   |       14.58 ezy93yz.wav
+|   |       15.00 seh7ga.wav
+|   |       15.03 noz15u.wav
+|   |       15.04 baw2039.wav
+|   |       15.06 tom2bk.wav
+|   |       15.08 efw4ly.wav
+|   |       15.19 vlg1nj.wav
+|   |       15.26 ezy891a.wav
+|   |       15.30 efw73h.wav
+|   |       
+|   \---Data 20 June 2025 - Original
+|           13.25 vlg4bp.m4a
+|           13.29 wzz934.m4a
+|           13.32 ezy79ek.m4a
+|           13.40 tsc123.m4a
+|           13.43 ubt70a.m4a
+|           13.47 ezy37hr.m4a
+|           13.48 ezy247g.m4a
+|           13.51 baw2203.m4a
+|           14.01 ezy174d.m4a
+|           14.07 dal63.m4a
+|           14.10 ezy465x.m4a
+|           14.16 efw06b.m4a
+|           14.19 ezy6519.m4a
+|           14.20 baw23k.m4a
+|           14.22 ezy85rg.m4a
+|           14.23 ezy458w.m4a
+|           14.30 ezy58jm.m4a
+|           14.33 ezy96qg.m4a
+|           14.37 ezy185b.m4a
+|           14.42 wuk4hp.m4a
+|           14.45 tom642.m4a
+|           14.47 vlg97cv.m4a
+|           14.48 thy7lj.m4a
+|           14.50 ezy25nz.m4a
+|           14.53 efw4yw.m4a
+|           14.55 tom4ce.m4a
+|           14.58 ezy93yz.m4a
+|           15.00 seh7ga.m4a
+|           15.03 noz15u.m4a
+|           15.04 baw2039.m4a
+|           15.06 tom2bk.m4a
+|           15.08 efw4ly.m4a
+|           15.19 vlg1nj.m4a
+|           15.26 ezy891a.m4a
+|           15.30 efw73h.m4a
+|           
++---dimensionality_reduction
+|       pca.py
+|       pca_2d.pkl
+|       pca_3d.pkl
+|       pca_3d.py
+|       pca_3d_labelled.py
+|       tsne.py
+|       tsne_2d.pkl
+|       umap.py
+|       
++---eda
+|       2_axes.py
+|       analysis.py
+|       backup.py
+|       clapwrapper_avg.py
+|       clapwrapper_similarity_scores.csv
+|       clap_avg.py
+|       clap_similarity_scores.csv
+|       clap_similarity_scores_full_prompts_1.csv
+|       clap_similarity_scores_full_prompts_2.csv
+|       clap_similarity_scores_new.csv
+|       first_data_visualisation.py
+|       m4a_main.py
+|       m4a_to_wav.py
+|       main.py
+|       old_main.py
+|       prompts.csv
+|       seq_clap.py
+|       
++---preprocessing
+|       avg_difference.py
+|       clap_similarity_scores_log.csv
+|       exploratory_analysis.py
+|       heatmap_plot.py
+|       json_builder.py
+|       labelled_data_01_08_2025.json
+|       labelled_data_20_06_2025.json
+|       logarithming.py
+|       new_json_builder.py
+|       pairwise_plots.py
+|       recordings.json
+|       
+\---tools
+    |   data_utils.py
