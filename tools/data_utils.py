@@ -1,8 +1,4 @@
-import json
-import pandas as pd
-
-
-def simplify_aircraft_model(model_name: str) -> str:
+def simplify_aircraft_model(model_name: str):
     """
     Simplify an aircraft model name by keeping only brand and base model.
 
@@ -18,10 +14,7 @@ def simplify_aircraft_model(model_name: str) -> str:
     return model_name
 
 
-def load_and_merge_clap_results(
-    json_path: str,
-    csv_path: str
-) -> pd.DataFrame:
+def load_and_merge_clap_results(json_path: str, csv_path: str):
     """
     Load CLAP similarity scores from a CSV and merge with aircraft metadata from a JSON file.
 
@@ -42,6 +35,10 @@ def load_and_merge_clap_results(
         - one column per prompt score (numeric)
 
     """
+    import json
+    import pandas as pd
+
+
     # Load similarity scores
     df = pd.read_csv(csv_path)
 
@@ -67,3 +64,47 @@ def load_and_merge_clap_results(
     merged.drop(columns=['filename'], inplace=True)
 
     return merged
+
+
+def split_by_heading(json_path: str, csv_path: str):
+    """
+    Load CLAP results merged with metadata, then split into subsets by heading.
+
+    Parameters
+    ----------
+    json_path : str
+        Path to JSON metadata file (must include 'heading').
+    csv_path : str
+        Path to CLAP results CSV.
+
+    Returns
+    -------
+    dict
+        Keys: 'east', 'north', 'south'.
+        Values: DataFrames filtered by heading.
+    """
+    import json
+    import pandas as pd
+
+    # Load base merged DataFrame from existing function
+    df = load_and_merge_clap_results(json_path, csv_path)
+
+    # Reload metadata just for the heading column
+    with open(json_path, 'r', encoding='utf-8') as f:
+        metadata = json.load(f)
+    heading_df = pd.DataFrame(metadata)[["filename", "heading"]]
+    heading_df['filename'] = heading_df['filename'].str.strip().str.lower()
+
+    # Merge heading into df
+    df['file'] = df['file'].str.strip().str.lower()
+    df = df.merge(heading_df, left_on='file', right_on='filename', how='left')
+    df.drop(columns=['filename'], inplace=True)
+
+    # Create subsets
+    subsets = {}
+    for direction in ['east', 'north', 'south']:
+        subsets[direction] = df[df['heading'].str.lower() == direction].copy()
+
+    return subsets
+
+
