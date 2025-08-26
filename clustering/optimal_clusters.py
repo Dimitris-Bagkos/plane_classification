@@ -7,10 +7,10 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
 # Load your data
-df_scores = pd.read_csv("../preprocessing/clap_similarity_scores_log.csv")
+df_scores = pd.read_csv("preprocessing/clap_similarity_scores_full_prompts_2.csv")
 
 # Load JSON metadata
-with open("../preprocessing/labelled_data_20_06_2025.json") as f:
+with open("preprocessing/labelled_data_01_08_2025.json") as f:
     metadata = json.load(f)
 
 

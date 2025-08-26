@@ -5,8 +5,8 @@ from tools import data_utils
 
 # Load enriched results
 df = data_utils.load_and_merge_clap_results(
-    "labelled_data_20_06_2025.json",
-    "../eda/clap_similarity_scores_full_prompts.csv"
+    "preprocessing/labelled_data_01_08_2025.json",
+    "eda/clap_similarity_scores_full_prompts_2.csv"
 )
 
 # Drop non-score columns

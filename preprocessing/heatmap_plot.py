@@ -1,12 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from tools import data_utils
+from tools.data_utils import load_and_merge_clap_results
+
 
 # Load enriched results
-df = data_utils.load_and_merge_clap_results(
-    "labelled_data_20_06_2025.json",
-    "../eda/clap_similarity_scores_full_prompts.csv"
+df = load_and_merge_clap_results(
+    "preprocessing/labelled_data_01_08_2025.json",
+    "eda/clap_similarity_scores_full_prompts_2.csv"
 )
 
 # Drop non-score columns
@@ -23,8 +24,8 @@ ax.xaxis.set_ticks_position('top')
 ax.xaxis.set_label_position('top')
 
 plt.title("Average CLAP Similarity Scores by Aircraft Model Group")
-plt.xlabel("Prompts")
-plt.ylabel("Aircraft Model Group")
+plt.xlabel("Aircraft Model Group")
+plt.ylabel("Prompts")
 plt.yticks(rotation=0)
 plt.tight_layout()
 plt.show()

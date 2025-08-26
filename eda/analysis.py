@@ -2,14 +2,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the data
-filepath = r"clap_similarity_scores_full_prompts.csv"
+filepath = r"clap_similarity_scores_full_prompts_2.csv"
 df = pd.read_csv(filepath)
 
 # Drop 'iteration' column if it's just an index
-data = df.drop(columns=['iteration'])
+# data = df.drop(columns=['iteration'])
 
 # Compute cumulative mean for each column
-cumulative_means = data.expanding().mean()
+cumulative_means = df.expanding().mean()
 
 # Plotting
 plt.figure(figsize=(10, 6))

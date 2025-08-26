@@ -15,7 +15,7 @@ json_path_1 = "preprocessing/labelled_data_01_08_2025.json"
 json_path_2 = "preprocessing/labelled_data_20_06_2025.json"
 
 MODE = "top_n"          # "top_n" or "all"
-TOP_N = 1               # used only if MODE == "top_n"
+TOP_N = 4               # used only if MODE == "top_n"
 K = None                # if None, uses number of distinct labels kept
 RANDOM_STATE = 1
 N_INIT = 10
@@ -52,7 +52,7 @@ def build_dataset(
     merged_list = []
     for i, (jp, cp) in enumerate(zip(json_paths, csv_paths), start=1):
         df_i = load_and_merge_clap_results(json_path=jp, csv_path=cp).copy()
-        df_i["session"] = i  # handy if you want to stratify/debug later
+        df_i["session"] = i  # handy if I want to stratify/debug later
         merged_list.append(df_i)
 
     df = pd.concat(merged_list, ignore_index=True)
